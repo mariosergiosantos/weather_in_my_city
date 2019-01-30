@@ -1,0 +1,51 @@
+<div class="col-lg-10 container">
+  <form>
+    <div>
+      <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="filter.search" placeholder="Search for... Ex. Salvador"
+          name="search">
+        <span class="input-group-btn">
+          <input class="btn btn-info" type="submit" (click)="search()" value="Search">
+        </span>
+      </div>
+    </div>
+  </form>
+
+  <div class="alert alert-danger" role="alert" *ngIf="hasError">
+    Erro ao buscar dados.
+  </div><br>
+
+  <div class="row" *ngIf="!hasError && resultWeather">
+    <div class="col-xs-6 col-md-5">
+      <span>Weather in {{resultWeather.name}}, {{resultWeather.sys.country}} {{resultWeather.main.temp}} °C
+        with {{resultWeather.weather[0].description}}</span>
+      <table class="table">
+        <tr>
+          <td>Temp Mim</td>
+          <td>{{resultWeather.main.temp_min}} °C</td>
+        </tr>
+        <tr>
+          <td>Temp Max</td>
+          <td>{{resultWeather.main.temp_max}} °C</td>
+        </tr>
+        <tr>
+          <td>Humidity</td>
+          <td>{{resultWeather.main.humidity}} %</td>
+        </tr>
+        <tr>
+          <td>Pressure</td>
+          <td>{{resultWeather.main.pressure}} hpa</td>
+        </tr>
+        <tr>
+          <td>Wind</td>
+          <td>Speed: {{resultWeather.wind.speed}} m/s</td>
+        </tr>
+        <tr>
+          <td>Geo coords</td>
+          <td>{{resultWeather.coord.lat}}, {{resultWeather.coord.lon}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
